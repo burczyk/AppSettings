@@ -7,8 +7,11 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "MySettings.h"
 
 @interface AppSettingsTests : XCTestCase
+
+@property (nonatomic, strong) MySettings *mySettings;
 
 @end
 
@@ -17,7 +20,8 @@
 - (void)setUp
 {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    _mySettings = [[MySettings alloc] init];
+    [_mySettings loadExampleValues];
 }
 
 - (void)tearDown
@@ -26,9 +30,66 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testPropertiesCount
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    NSArray *d = [_mySettings propertiesNames];
+    XCTAssertEqualObjects(@(d.count), @6, @"");
+}
+
+- (void)testSerialization
+{
+    NSDictionary *d = [_mySettings dictionaryOfPropertiesAndValues];
+    XCTAssertNotNil(d, @"");
+    NSLog(@"dict: %@", d);
+}
+
+- (void)testDeserialization
+{
+    NSDictionary *d = [_mySettings dictionaryOfPropertiesAndValues];
+    MySettings *ms = [[MySettings alloc] initWithDictionary:d];
+    
+    XCTAssertTrue(ms.exampleBool, @"");
+    XCTAssertNotNil(ms.exampleDate, @"");
+    XCTAssertNotNil(ms.exampleNumber, @"");
+    XCTAssertNotNil(ms.exampleString, @"");
+    XCTAssertEqual(ms.exampleInt, 456, @"");
+}
+
+- (void)testWhole
+{
+    NSDictionary *d = [_mySettings dictionaryOfPropertiesAndValues];
+    MySettings *ms = [[MySettings alloc] initWithDictionary:d];
+    NSDictionary *d2 = [ms dictionaryOfPropertiesAndValues];
+    
+    for (NSString *key in [d allKeys]) {
+        XCTAssertTrue([[d2 allKeys] containsObject:key], @"");
+    }
+}
+
+- (void)testSave
+{
+    [_mySettings save];
+}
+
+- (void)testLoad
+{
+    [_mySettings save];
+    MySettings *ms = [MySettings load];
+    XCTAssertNotNil(ms, @"");
+    
+    NSLog(@"loaded settings: %@", ms);
+    NSLog(@"loaded settings: %@", [ms dictionaryOfPropertiesAndValues]);
+}
+
+- (void)testCustomKey
+{
+    _mySettings.exampleNumber = @123456;
+    _mySettings.exampleString = @"changed string";
+    [_mySettings saveUnderKey:@"testKey"];
+    MySettings *ms = [MySettings loadFromKey:@"testKey"];
+    XCTAssertNotNil(ms, @"");
+    
+    NSLog(@"loaded settings from custom key: %@", [ms dictionaryOfPropertiesAndValues]);
 }
 
 @end

@@ -16,6 +16,8 @@
 		8E01EA111854760800C9A70E /* libAppSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E01E9F91854760800C9A70E /* libAppSettings.a */; };
 		8E01EA171854760800C9A70E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8E01EA151854760800C9A70E /* InfoPlist.strings */; };
 		8E01EA191854760800C9A70E /* AppSettingsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E01EA181854760800C9A70E /* AppSettingsTests.m */; };
+		8E01EA241854771600C9A70E /* MySettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E01EA231854771600C9A70E /* MySettings.m */; };
+		8E01EA271854835B00C9A70E /* MyNestedSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E01EA261854835B00C9A70E /* MyNestedSettings.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,10 @@
 		8E01EA141854760800C9A70E /* AppSettingsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AppSettingsTests-Info.plist"; sourceTree = "<group>"; };
 		8E01EA161854760800C9A70E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8E01EA181854760800C9A70E /* AppSettingsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppSettingsTests.m; sourceTree = "<group>"; };
+		8E01EA221854771600C9A70E /* MySettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySettings.h; sourceTree = "<group>"; };
+		8E01EA231854771600C9A70E /* MySettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySettings.m; sourceTree = "<group>"; };
+		8E01EA251854835B00C9A70E /* MyNestedSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNestedSettings.h; sourceTree = "<group>"; };
+		8E01EA261854835B00C9A70E /* MyNestedSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNestedSettings.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,10 @@
 			isa = PBXGroup;
 			children = (
 				8E01EA181854760800C9A70E /* AppSettingsTests.m */,
+				8E01EA221854771600C9A70E /* MySettings.h */,
+				8E01EA231854771600C9A70E /* MySettings.m */,
+				8E01EA251854835B00C9A70E /* MyNestedSettings.h */,
+				8E01EA261854835B00C9A70E /* MyNestedSettings.m */,
 				8E01EA131854760800C9A70E /* Supporting Files */,
 			);
 			path = AppSettingsTests;
@@ -232,7 +242,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E01EA241854771600C9A70E /* MySettings.m in Sources */,
 				8E01EA191854760800C9A70E /* AppSettingsTests.m in Sources */,
+				8E01EA271854835B00C9A70E /* MyNestedSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

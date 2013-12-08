@@ -10,4 +10,15 @@
 
 @interface AppSettings : NSObject
 
+- (id)initWithDictionary:(NSDictionary*)dictionaryOfPropertiesAndValues;
+
+- (NSArray*)propertiesNames;
+- (NSDictionary*)dictionaryOfPropertiesAndValues;
+
+- (BOOL)save;
+- (BOOL)saveUnderKey:(NSString*)mainKey;
+
++ (id)load;
++ (id)loadFromKey:(NSString*)mainKey;
+
 @end
