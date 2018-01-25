@@ -17,6 +17,7 @@
     _exampleNumber = @123;
     _exampleInt = 456;
     _exampleBool = YES;
+    _exampleData = [@"test data" dataUsingEncoding:NSUTF8StringEncoding];
     
     _myNestedSettings = [[MyNestedSettings alloc] init];
     [_myNestedSettings loadExampleValue];

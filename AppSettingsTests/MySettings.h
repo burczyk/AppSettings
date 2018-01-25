@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSNumber *exampleNumber;
 @property (nonatomic, assign) int exampleInt;
 @property (nonatomic, assign) BOOL exampleBool;
+@property (nonatomic, strong) NSData *exampleData; 
 
 @property (nonatomic, strong) MyNestedSettings *myNestedSettings;
 
