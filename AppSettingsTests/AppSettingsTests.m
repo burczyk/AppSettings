@@ -33,7 +33,7 @@
 - (void)testPropertiesCount
 {
     NSArray *d = [_mySettings propertiesNames];
-    XCTAssertEqualObjects(@(d.count), @6, @"");
+    XCTAssertEqualObjects(@(d.count), @7, @"");
 }
 
 - (void)testSerialization
@@ -90,6 +90,13 @@
     XCTAssertNotNil(ms, @"");
     
     NSLog(@"loaded settings from custom key: %@", [ms dictionaryOfPropertiesAndValues]);
+}
+
+- (void)testEmptyData {
+  _mySettings.exampleData = nil;
+  [_mySettings saveUnderKey:@"testEmptyData"];
+  MySettings *ms = [MySettings loadFromKey:@"testEmptyData"];
+  XCTAssertNotNil(ms, @"");
 }
 
 @end
