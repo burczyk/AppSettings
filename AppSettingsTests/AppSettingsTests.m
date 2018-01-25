@@ -99,4 +99,20 @@
   XCTAssertNotNil(ms, @"");
 }
 
+- (void)testEmptyProperties {
+  _mySettings.exampleData = nil;
+  _mySettings.exampleDate = nil;
+  _mySettings.exampleNumber = nil;
+  _mySettings.exampleString = nil;
+  NSString *key = @"testEmptyProperties";
+  [_mySettings saveUnderKey:key];
+  MySettings *ms = [MySettings loadFromKey:key];
+  XCTAssertNotNil(ms, @"");
+  XCTAssertNil(ms.exampleData);
+  XCTAssertNil(ms.exampleDate);
+  XCTAssertNil(ms.exampleNumber);
+  XCTAssertNil(ms.exampleString);
+}
+
+
 @end
