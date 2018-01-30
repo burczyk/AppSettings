@@ -42,7 +42,18 @@
 
 - (NSDictionary*)dictionaryOfPropertiesAndValues
 {
-    return [self dictionaryWithValuesForKeys:[self propertiesNames]];
+    NSDictionary *result = [self dictionaryWithValuesForKeys:[self propertiesNames]];
+    if ([[result allValues] containsObject:[NSNull null]]) {
+      NSMutableDictionary *mutableResult = [NSMutableDictionary dictionaryWithDictionary:result];
+      for (NSString * key in mutableResult.allKeys) {
+        id val = [mutableResult objectForKey:key];
+        if ([val isKindOfClass:[NSNull class]]) {
+          [mutableResult removeObjectForKey:key];
+        }
+      }
+      result = [NSDictionary dictionaryWithDictionary:mutableResult];
+    }
+    return result;
 }
 
 #pragma mark - NSUserDefaults save & load
